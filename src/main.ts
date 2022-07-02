@@ -9,14 +9,12 @@ console.log('Script started successfully');
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
-
-    console.log('playerId',WA.player.id)
     
     WA.controls.disablePlayerProximityMeeting()
 
-    let letsPlayButton: CreateUIWebsiteEvent = {
-        url: "http://localhost:3000/src/letsPlayButton.html", // Dev Webiste URL
-        //url: "https://valdotr.github.io/jam.gg/src/letsPlayButton.html", // Website URL
+    let availabilityButton: CreateUIWebsiteEvent = {
+        //url: "http://localhost:3000/src/availabilityButton.html", // Dev Webiste URL
+        url: "https://valdotr.github.io/jam.gg/src/availabilityButton.html", // Website URL
         visible: true,     // The website is visible or not
         allowApi: true,    // Allow scripting API on the website
         allowPolicy: "",   // The list of feature policies allowed
@@ -35,7 +33,7 @@ WA.onInit().then(() => {
             right: "5px",
         },
     }
-    WA.ui.website.open(letsPlayButton)
+    WA.ui.website.open(availabilityButton)
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
