@@ -14,47 +14,52 @@
     </style>
 
     <script>
+        /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
         console.log('UI Website started successfully');
 
-        /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
+        function track(action, context) {
+            console.log({playerId: WA.player.id, action, context})
+        }
+
         WA.onInit().then(() => {
             // Analytics
-            console.log({playerId: WA.player.id, action: "entered", context: "map"})
+
+            track("entered", "map")
 
             setInterval(() => {
-                console.log({playerId: WA.player.id, action: "ping", context: "map"})
+                track("ping", "map")
             }, 3000)
 
             WA.chat.onChatMessage(() => {
-                console.log({playerId: WA.player.id, action: "sent", context: "message"})
+                track("sent", "message")
             })
 
             WA.room.onEnterLayer('games/Metal_Slug').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "entered", context: "Metal_Slug"})
+                track("entered", "Metal_Slug")
             })
             WA.room.onLeaveLayer('games/Metal_Slug').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "leaved", context: "Metal_Slug"})
+                track("leaved", "Metal_Slug")
             })
 
             WA.room.onEnterLayer('games/Metal_Slug_X').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "entered", context: "Metal_Slug_X"})
+                track("entered", "Metal_Slug_X")
             })
             WA.room.onLeaveLayer('games/Metal_Slug_X').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "leaved", context: "Metal_Slug_X"})
+                track("leaved", "Metal_Slug_X")
             })
 
             WA.room.onEnterLayer('games/Arsene_Bomber').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "entered", context: "Arsene_Bomber"})
+                track("entered", "Arsene_Bomber")
             })
             WA.room.onLeaveLayer('games/Arsene_Bomber').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "leaved", context: "Arsene_Bomber"})
+                track("leaved", "Arsene_Bomber")
             })
 
             WA.room.onEnterLayer('games/The_King_Of_Fighters').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "entered", context: "The_King_Of_Fighters"})
+                track("entered", "The_King_Of_Fighters")
             })
             WA.room.onLeaveLayer('games/The_King_Of_Fighters').subscribe(() => {
-                console.log({playerId: WA.player.id, action: "leaved", context: "The_King_Of_Fighters"})
+                track("leaved", "The_King_Of_Fighters")
             })
 
             // Availability Button
@@ -67,13 +72,13 @@
                     WA.player.setOutlineColor(255, 0, 0)
                     document.getElementById("availability").className = "nes-btn is-error"
                     document.getElementById("availability").innerHTML = "Not available to play"
-                    console.log({playerId: WA.player.id, action: "off", context: "availability"})
+                    track("off", "availability")
                 } else {
                     isPlayerAvailable = true
                     WA.player.setOutlineColor(0, 255, 0)
                     document.getElementById("availability").className = "nes-btn is-success"
                     document.getElementById("availability").innerHTML = "Available to play"
-                    console.log({playerId: WA.player.id, action: "on", context: "availability"})
+                    track("on", "availability")
                 }
             })
         })
