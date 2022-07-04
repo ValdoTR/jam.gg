@@ -11,10 +11,15 @@ WA.onInit().then(() => {
     console.log('Player tags: ',WA.player.tags)
     
     WA.controls.disablePlayerProximityMeeting()
+    // TODO: remove only cam
+    // TODO: disable mic (user can always enable it)
+    // TODO: Open chat with proximity
+
+    const mapUrl = WA.room.mapURL
+    const root = mapUrl.substring(0, mapUrl.lastIndexOf("/"))
 
     let availabilityButton: CreateUIWebsiteEvent = {
-        //url: "http://localhost:3000/src/availabilityButton.html", // Dev Webiste URL
-        url: "https://valdotr.github.io/jam.gg/src/availabilityButton.html", // Website URL
+        url:  root + "/availabilityButton.html", // Dev Webiste URL
         visible: true,     // The website is visible or not
         allowApi: true,    // Allow scripting API on the website
         allowPolicy: "",   // The list of feature policies allowed
