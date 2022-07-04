@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+    <style>
+        body {
+            background-color: inherit;
+        }
+    </style>
+
+    <script>
+        /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
+        console.log('UI Website started successfully');
+
+        function track(action, context) {
+            console.log({playerId: WA.player.id, action, context})
+        }
+
+        WA.onInit().then(() => {
+            // Analytics
+
+            track("entered", "map")
+
+            setInterval(() => {
+                track("ping", "map")
+            }, 3000)
+
+            WA.chat.onChatMessage(() => {
+                track("sent", "message")
+            })
+
+            WA.room.onEnterLayer('games/Metal_Slug').subscribe(() => {
+                track("entered", "Metal_Slug")
+            })
+            WA.room.onLeaveLayer('games/Metal_Slug').subscribe(() => {
+                track("leaved", "Metal_Slug")
+            })
+
+            WA.room.onEnterLayer('games/Metal_Slug_X').subscribe(() => {
+                track("entered", "Metal_Slug_X")
+            })
+            WA.room.onLeaveLayer('games/Metal_Slug_X').subscribe(() => {
+                track("leaved", "Metal_Slug_X")
+            })
+
+            WA.room.onEnterLayer('games/Arsene_Bomber').subscribe(() => {
+                track("entered", "Arsene_Bomber")
+            })
+            WA.room.onLeaveLayer('games/Arsene_Bomber').subscribe(() => {
+                track("leaved", "Arsene_Bomber")
+            })
+
+            WA.room.onEnterLayer('games/The_King_Of_Fighters').subscribe(() => {
+                track("entered", "The_King_Of_Fighters")
+            })
+            WA.room.onLeaveLayer('games/The_King_Of_Fighters').subscribe(() => {
+                track("leaved", "The_King_Of_Fighters")
+            })
+
+            // Availability Button
+            let isPlayerAvailable = false
+
+            const element = document.getElementById("availability")
+            element.addEventListener("click", function () {
+                if (isPlayerAvailable) {
+                    isPlayerAvailable = false
+                    WA.player.setOutlineColor(255, 0, 0)
+                    document.getElementById("availability").className = "nes-btn is-error"
+                    document.getElementById("availability").innerHTML = "Not available to play"
+                    track("off", "availability")
+                } else {
+                    isPlayerAvailable = true
+                    WA.player.setOutlineColor(0, 255, 0)
+                    document.getElementById("availability").className = "nes-btn is-success"
+                    document.getElementById("availability").innerHTML = "Available to play"
+                    track("on", "availability")
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="availability" type="button" class="nes-btn is-error">Not available to play</button>
+</body>
+</html>
