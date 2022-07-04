@@ -12,7 +12,7 @@ WA.onInit().then(() => {
     
     WA.controls.disablePlayerProximityMeeting()
     // TODO: remove only cam
-    // TODO: disable mic (user can always enable it)
+    // TODO: disable mic (users can always enable it)
     // TODO: Open chat with proximity
 
     const mapUrl = WA.room.mapURL
