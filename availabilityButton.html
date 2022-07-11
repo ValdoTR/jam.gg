@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    
     <script src="https://play.workadventu.re/iframe_api.js"></script>
-    <style>
-        body {
-            background-color: inherit;
-        }
-    </style>
-
     <script>
         /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
         console.log('UI Website started successfully');
 
-        function track(action, context) {
-            console.log({playerId: WA.player.id, action, context})
+        async function track(action, context) {
+            /*await fetch('https://jamanalytics-5fymq0yw.uc.gateway.dev/workadventure-monitor' +
+            '?key=AIzaSyB0M3T2oet-j8NDGlEKuGfTvdsgbFQmEs8' +
+            `&playerId=${WA.player.id}` +
+            `&action=${action}` +
+            `&context=${context}`, {
+                mode: 'cors',
+                cache: 'no-cache'
+            })*/
         }
 
         WA.onInit().then(() => {
             // Analytics
-
             track("entered", "map")
 
             setInterval(() => {
@@ -63,28 +63,33 @@
             })
 
             // Availability Button
-            let isPlayerAvailable = false
-
-            const element = document.getElementById("availability")
-            element.addEventListener("click", function () {
-                if (isPlayerAvailable) {
-                    isPlayerAvailable = false
-                    WA.player.setOutlineColor(255, 0, 0)
-                    document.getElementById("availability").className = "nes-btn is-error"
-                    document.getElementById("availability").innerHTML = "Not available to play"
-                    track("off", "availability")
-                } else {
-                    isPlayerAvailable = true
+            const toggle = document.getElementById("availabilityToggle")
+            toggle.addEventListener("change", () => {
+                if (toggle.checked) {
                     WA.player.setOutlineColor(0, 255, 0)
-                    document.getElementById("availability").className = "nes-btn is-success"
-                    document.getElementById("availability").innerHTML = "Available to play"
                     track("on", "availability")
+                } else {
+                    WA.player.removeOutlineColor()
+                    track("off", "availability")
                 }
             })
         })
     </script>
+  <link rel="stylesheet" href="./assets/availabilityButton.1ea6ab20.css">
 </head>
 <body>
-    <button id="availability" type="button" class="nes-btn is-error">Not available to play</button>
+    <div id="availabilityUI">
+        <div id="text">
+            <h4>Want to play?</h4>
+        </div>
+        <div id="toggle">
+            <ul class="tg-list">
+                <li class="tg-list-item">
+                    <input class="tgl tgl-skewed" id="availabilityToggle" type="checkbox"/>
+                    <label class="tgl-btn" data-tg-off="NO" data-tg-on="YES" for="availabilityToggle"></label>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
