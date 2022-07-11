@@ -28,8 +28,8 @@ WA.onInit().then(() => {
             horizontal: "middle",
         },
         size: {            // Size on the UI (available units: px|em|%|cm|in|pc|pt|mm|ex|vw|vh|rem and others values auto|inherit)
-            height: "100px",
-            width: "400px",
+            height: "70px",
+            width: "350px",
         },
         margin: {          // Website margin (available units: px|em|%|cm|in|pc|pt|mm|ex|vw|vh|rem and others values auto|inherit)
             top: "5px",
