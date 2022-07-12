@@ -24,7 +24,7 @@ WA.onInit().then(() => {
         allowApi: true,    // Allow scripting API on the website
         allowPolicy: "",   // The list of feature policies allowed
         position: {
-            vertical: "top",
+            vertical: "bottom",
             horizontal: "middle",
         },
         size: {            // Size on the UI (available units: px|em|%|cm|in|pc|pt|mm|ex|vw|vh|rem and others values auto|inherit)
