@@ -27,7 +27,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/play.jam.gg\/?details=The%20King%20of%20Fighters%20%2798"
+                         "value":"https:\/\/play.jam.gg\/The%20King%20of%20Fighters%20'98"
                         }, 
                         {
                          "name":"openWebsiteTrigger",
@@ -60,7 +60,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/play.jam.gg\/?details=Arsene%20Bomber"
+                         "value":"https:\/\/play.jam.gg\/Arsene%20Bomber"
                         }, 
                         {
                          "name":"openWebsiteTrigger",
@@ -93,7 +93,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/play.jam.gg\/?details=Metal%20Slug%20X"
+                         "value":"https:\/\/play.jam.gg\/Metal%20Slug%20X"
                         }, 
                         {
                          "name":"openWebsiteTrigger",
@@ -126,7 +126,7 @@
                         {
                          "name":"openWebsite",
                          "type":"string",
-                         "value":"https:\/\/play.jam.gg\/?details=Metal%20Slug"
+                         "value":"https:\/\/play.jam.gg\/Metal%20Slug"
                         }, 
                         {
                          "name":"openWebsiteTrigger",
@@ -171,7 +171,7 @@
                 {
                  "name":"audioVolume",
                  "type":"float",
-                 "value":0.2
+                 "value":0.1
                 }, 
                 {
                  "name":"playAudio",
