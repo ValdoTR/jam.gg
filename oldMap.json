@@ -37,7 +37,7 @@
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
-                         "value":"Press [SPACE] to play The King Of Fighters"
+                         "value":"Press [SPACE] or touch here to play The King Of Fighters"
                         }],
                  "type":"tilelayer",
                  "visible":true,
@@ -65,7 +65,7 @@
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
-                         "value":"Press [SPACE] to play Ars\u00e8ne Bomber"
+                         "value":"Press [SPACE] or touch here to play Ars\u00e8ne Bomber"
                         }],
                  "type":"tilelayer",
                  "visible":true,
@@ -93,7 +93,7 @@
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
-                         "value":"Press [SPACE] to play Metal Slug X"
+                         "value":"Press [SPACE] or touch here to play Metal Slug X"
                         }],
                  "type":"tilelayer",
                  "visible":true,
@@ -121,7 +121,7 @@
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
-                         "value":"Press [SPACE] to play Metal Slug"
+                         "value":"Press [SPACE] or touch here to play Metal Slug"
                         }],
                  "type":"tilelayer",
                  "visible":true,
