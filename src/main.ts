@@ -10,7 +10,12 @@ WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
     
-    WA.controls.disablePlayerProximityMeeting()
+    WA.player.proximityMeeting.onJoin().subscribe(async (players) => {
+        console.log("players",players)
+        WA.chat.open()
+    });
+    WA.controls.disableWebcam()
+    WA.controls.turnOffMicrophone()
     // TODO: remove only cam
     // TODO: disable mic (users can always enable it)
     // TODO: Open chat with proximity
@@ -24,7 +29,7 @@ WA.onInit().then(() => {
         allowApi: true,    // Allow scripting API on the website
         allowPolicy: "",   // The list of feature policies allowed
         position: {
-            vertical: "bottom",
+            vertical: "top",
             horizontal: "middle",
         },
         size: {            // Size on the UI (available units: px|em|%|cm|in|pc|pt|mm|ex|vw|vh|rem and others values auto|inherit)
@@ -33,9 +38,9 @@ WA.onInit().then(() => {
         },
         margin: {          // Website margin (available units: px|em|%|cm|in|pc|pt|mm|ex|vw|vh|rem and others values auto|inherit)
             top: "5px",
-            bottom: "5px",
-            left: "5px",
-            right: "5px",
+            bottom: "0px",
+            left: "0px",
+            right: "0px",
         },
     }
     WA.ui.website.open(availabilityButton)
