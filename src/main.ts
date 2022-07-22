@@ -11,14 +11,15 @@ WA.onInit().then(() => {
     console.log('Player tags: ',WA.player.tags)
     
     WA.player.proximityMeeting.onJoin().subscribe(async (players) => {
-        console.log("players",players)
+        console.log("onJoin players",players)
         WA.chat.open()
+    });
+    WA.player.proximityMeeting.onLeave().subscribe(async (players) => {
+        console.log("onLeave players",players)
+        WA.chat.close()
     });
     WA.controls.disableWebcam()
     WA.controls.turnOffMicrophone()
-    // TODO: remove only cam
-    // TODO: disable mic (users can always enable it)
-    // TODO: Open chat with proximity
 
     const mapUrl = WA.room.mapURL
     const root = mapUrl.substring(0, mapUrl.lastIndexOf("/"))
