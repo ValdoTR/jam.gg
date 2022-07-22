@@ -10,15 +10,21 @@ WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
     
+    // @ts-ignore
     WA.player.proximityMeeting.onJoin().subscribe(async (players) => {
         console.log("onJoin players",players)
+        // @ts-ignore
         WA.chat.open()
     });
+    // @ts-ignore
     WA.player.proximityMeeting.onLeave().subscribe(async (players) => {
         console.log("onLeave players",players)
+        // @ts-ignore
         WA.chat.close()
     });
+    // @ts-ignore
     WA.controls.disableWebcam()
+    // @ts-ignore
     WA.controls.turnOffMicrophone()
 
     const mapUrl = WA.room.mapURL
