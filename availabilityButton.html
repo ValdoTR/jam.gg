@@ -11,66 +11,16 @@
         /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
         console.log('UI Website started successfully');
 
-        async function track(action, context) {
-            await fetch('https://jamanalytics-5fymq0yw.uc.gateway.dev/workadventure-monitor' +
-            '?key=AIzaSyB0M3T2oet-j8NDGlEKuGfTvdsgbFQmEs8' +
-            `&playerId=${WA.player.id}` +
-            `&action=${action}` +
-            `&context=${context}`, {
-                mode: 'cors',
-                cache: 'no-cache'
-            })
-        }
-
         WA.onInit().then(() => {
-            // Analytics
-            track("entered", "map")
-
-            setInterval(() => {
-                track("ping", "map")
-            }, 3000)
-
-            WA.chat.onChatMessage(() => {
-                track("sent", "message")
-            })
-
-            WA.room.onEnterLayer('games/Metal_Slug').subscribe(() => {
-                track("entered", "Metal_Slug")
-            })
-            WA.room.onLeaveLayer('games/Metal_Slug').subscribe(() => {
-                track("leaved", "Metal_Slug")
-            })
-
-            WA.room.onEnterLayer('games/Metal_Slug_X').subscribe(() => {
-                track("entered", "Metal_Slug_X")
-            })
-            WA.room.onLeaveLayer('games/Metal_Slug_X').subscribe(() => {
-                track("leaved", "Metal_Slug_X")
-            })
-
-            WA.room.onEnterLayer('games/Arsene_Bomber').subscribe(() => {
-                track("entered", "Arsene_Bomber")
-            })
-            WA.room.onLeaveLayer('games/Arsene_Bomber').subscribe(() => {
-                track("leaved", "Arsene_Bomber")
-            })
-
-            WA.room.onEnterLayer('games/The_King_Of_Fighters').subscribe(() => {
-                track("entered", "The_King_Of_Fighters")
-            })
-            WA.room.onLeaveLayer('games/The_King_Of_Fighters').subscribe(() => {
-                track("leaved", "The_King_Of_Fighters")
-            })
-
             // Availability Button
             const toggle = document.getElementById("availabilityToggle")
             toggle.addEventListener("change", () => {
                 if (toggle.checked) {
                     WA.player.setOutlineColor(0, 255, 0)
-                    track("on", "availability")
+                    //track("on", "availability")
                 } else {
                     WA.player.removeOutlineColor()
-                    track("off", "availability")
+                    //track("off", "availability")
                 }
             })
         })
