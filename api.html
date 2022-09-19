@@ -10,7 +10,7 @@
         async function track(action, context) {
             await fetch('https://jamanalytics-5fymq0yw.uc.gateway.dev/workadventure-monitor' +
             '?key=AIzaSyB0M3T2oet-j8NDGlEKuGfTvdsgbFQmEs8' +
-            `&playerId=${WA.player.id}` +
+            `&jamverseUser=${WA.player.id}` +
             `&action=${action}` +
             `&context=${context}`, {
                 mode: 'cors',
