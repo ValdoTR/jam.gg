@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+    <script>
+        /// <reference path="../node_modules/@workadventure/iframe-api-typings/iframe_api.d.ts" />
+        console.log('API iFrame started successfully');
+
+        async function track(action, context) {
+            await fetch('https://jamanalytics-5fymq0yw.uc.gateway.dev/workadventure-monitor' +
+            '?key=AIzaSyB0M3T2oet-j8NDGlEKuGfTvdsgbFQmEs8' +
+            `&jamverseUser=${WA.player.id}` +
+            `&action=${action}` +
+            `&context=${context}`, {
+                mode: 'cors',
+                cache: 'no-cache'
+            })
+        }
+
+        function openGame(url) {
+            WA.nav.openCoWebSite(url+`?jamverseUser=${WA.player.id}`, false, "", 100)
+        }
+
+        WA.onInit().then(() => {
+            track("entered", "map")
+
+            setInterval(() => {
+                track("ping", "map")
+            }, 3000)
+
+            WA.chat.onChatMessage(() => {
+                track("sent", "message")
+            })
+
+            WA.room.onEnterLayer('games/Metal_Slug').subscribe(() => {
+                openGame("https://jam.gg/play/Metal%20Slug")
+                track("entered", "Metal_Slug")
+            })
+            WA.room.onLeaveLayer('games/Metal_Slug').subscribe(() => {
+                WA.nav.closeCoWebSite()
+                track("leaved", "Metal_Slug")
+            })
+
+            WA.room.onEnterLayer('games/Metal_Slug_X').subscribe(() => {
+                openGame("https://jam.gg/play/Metal%20Slug%20X")
+                track("entered", "Metal_Slug_X")
+            })
+            WA.room.onLeaveLayer('games/Metal_Slug_X').subscribe(() => {
+                WA.nav.closeCoWebSite()
+                track("leaved", "Metal_Slug_X")
+            })
+
+            WA.room.onEnterLayer('games/Arsene_Bomber').subscribe(() => {
+                openGame("https://jam.gg/play/Arsene%20Bomber")
+                track("entered", "Arsene_Bomber")
+            })
+            WA.room.onLeaveLayer('games/Arsene_Bomber').subscribe(() => {
+                WA.nav.closeCoWebSite()
+                track("leaved", "Arsene_Bomber")
+            })
+
+            WA.room.onEnterLayer('games/The_King_Of_Fighters').subscribe(() => {
+                openGame("https://jam.gg/play/The%20King%20of%20Fighters%20'98")
+                track("entered", "The_King_Of_Fighters")
+            })
+            WA.room.onLeaveLayer('games/The_King_Of_Fighters').subscribe(() => {
+                WA.nav.closeCoWebSite()
+                track("leaved", "The_King_Of_Fighters")
+            })
+        })
+    </script>
+</head>
+</html>
