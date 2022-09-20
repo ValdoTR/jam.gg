@@ -7,7 +7,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
-                availabilityButton: "./availabilityButton.html",
+                availabilityButton: "./api.html",
                 ...getMapsScripts(),
             },
         },
