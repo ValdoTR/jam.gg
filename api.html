@@ -19,7 +19,7 @@
         }
 
         function openGame(url) {
-            WA.nav.openCoWebSite(url+`?jamverseUser=${WA.player.id}`, false, "", 100)
+            WA.nav.openCoWebSite(url+`?jamverseUser=${WA.player.id}`, true, "camera *;microphone *", 100)
         }
 
         WA.onInit().then(() => {
